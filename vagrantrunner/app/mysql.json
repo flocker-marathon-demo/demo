@@ -1,0 +1,25 @@
+{
+  "id": "mysql",
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "mysql:5.7.5",
+      "network": "BRIDGE",
+      "portMappings": [
+        { "hostPort": 0, "containerPort": 3306, "servicePort": 9001 }
+      ],
+      "parameters": [
+        { "key": "volume-driver", "value": "flocker" }
+      ]
+    }
+  },
+  "env": {
+    "MYSQL_ROOT_PASSWORD": "xyzzy"
+  },
+  "constraints": [
+    ["hostname", "UNIQUE"]
+  ],
+  "instances": 1,
+  "cpus": 0.1,
+  "mem": 256
+}
